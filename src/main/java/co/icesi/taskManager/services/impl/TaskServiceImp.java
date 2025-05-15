@@ -38,11 +38,14 @@ public class TaskServiceImp implements TaskService {
         return null;
     }
 
-    @Override
+     @Override
     public void deleteTask(long taskId) {
         Task task = taskRepository.findById(taskId).orElse(null);
         if (task != null) {
             taskRepository.delete(task);
+        }
+        else {
+            throw new IllegalArgumentException("Task with ID " + taskId + " does not exist.");
         }
     }
 

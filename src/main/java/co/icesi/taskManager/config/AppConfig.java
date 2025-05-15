@@ -35,7 +35,7 @@ public class AppConfig {
             .sessionManagement(t -> t.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/login").permitAll()
-                .requestMatchers("/tasks").authenticated()
+                .requestMatchers("/tasks/**").authenticated()
             );
         http.addFilterBefore(jw, UsernamePasswordAuthenticationFilter.class);
         return http.build();
